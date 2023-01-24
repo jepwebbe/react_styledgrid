@@ -1,15 +1,15 @@
 import React from "react";
+import { Link, NavLink } from "react-router-dom";
 import styled from "styled-components";
-import { breakpoints } from "../Styled/Theme/Template";
 const Content = () => {
   return (
     <>
       <StyledHeader>Header</StyledHeader>
       <StyledHero>Hero</StyledHero>
-      <StyledMenu>Menu</StyledMenu>
+      <StyledMenu><NavLink to="/contact">To contact</NavLink><NavLink to="/">To home</NavLink></StyledMenu>
       <StyledMain>Main</StyledMain>
       <StyledBanner>Banner</StyledBanner>
-      <StyledExtra style={breakpoints.l ? {display: "none"} : null}>Extra</StyledExtra>
+      <StyledExtra>Extra</StyledExtra>
       <StyledImage>Image</StyledImage>
     </>
   );
@@ -20,28 +20,34 @@ export default Content;
 const StyledHeader = styled.header`
   grid-area: header;
   background-color: green;
+  color: ${(props) => props.theme.colors.aFineColor};
 `;
 const StyledHero = styled.div`
-grid-area: hero;
-background-color: blue;
+  grid-area: hero;
+  background-color: blue;
 `;
 const StyledMenu = styled.nav`
-grid-area: menu;
-background-color: yellow;
-`
+  grid-area: menu;
+  background-color: yellow;
+`;
 const StyledMain = styled.main`
-grid-area: main;
-background-color: red;
-`
+  grid-area: main;
+  background-color: red;
+`;
 const StyledBanner = styled.div`
-grid-area: banner;
-background-color: purple;
-`
+  grid-area: banner;
+  background-color: purple;
+`;
 const StyledExtra = styled.div`
-grid-area: extra;
-background-color: beige;
-`
+  grid-area: extra;
+  background-color: beige;
+  display: block;
+
+  @media (min-width: ${(props) => props.theme.breakpoints.l}) {
+    display: none;
+  }
+`;
 const StyledImage = styled.div`
-grid-area: image;
-background-color: orange;
-;`
+  grid-area: image;
+  background-color: orange; ;
+`;
