@@ -1,24 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import { template } from "./Styled/Theme/Template";
+import { ThemeProvider } from "styled-components";
+import { theme } from "./Styled/Theme/Theme";
+import { Grid } from "./Styled/Grid";
+import { GlobalStyles } from "./Styled/Global";
+import Content from "./Components/Content";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <Grid
+        gtc={template.desktop.columns}
+        gtcM={template.mobile.columns}
+        gtcT={template.tablet.columns}
+        gtr={template.desktop.rows}
+        gtrM={template.mobile.rows}
+        gtrT={template.tablet.rows}
+        gta={template.desktop.area}
+        gtaM={template.mobile.area}
+        gtaT={template.tablet.area}
+      ><Content /></Grid>
+      
+      <GlobalStyles />
+    </ThemeProvider>
   );
 }
 
